@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body{
+      height: 100%;
+    }
+    /* 中心物件出發到中間做對稱:中心本體大小、定位(先留框線)、形狀顏色訂好，再調偽元素們。不然會跟著跑位  */
+    /* 先trbl再用translate調整 */
+    /* 偽元素必寫content:'' */
+    .face{
+      width: 300px;
+      height: 300px;
+      /* 暫時顯框線定位用 */
+      /* border: 1px solid black; */
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      background: black;
+      border-radius: 50%;
+    }
+    /* 左耳 */
+    .face::before{
+      content: '';
+      width: 30px;
+      height: 30px;
+      background: white;
+      border: 10px solid black;
+
+      position: absolute;
+      left: 10%;
+      border-radius: 50%;
+    }
+    /* 右耳 */
+    .face::after{
+      content: '';
+      width: 30px;
+      height: 30px;
+      background: white;
+      border: 10px solid black;
+      
+      position: absolute;
+      right: 10%;
+      border-radius: 50%;
+    }
+    .center{
+      width: 130px;
+      height: 90px;
+      /* border: 1px solid red; */
+      
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      background: white;
+      border-radius: 50%;
+    }
+    /* 左腮紅 */
+    .center::before{
+      content: '';
+      width: 70px;
+      height: 70px;
+      /* border: 1px solid red; */
+
+      position: absolute;
+      left: -75%;
+
+      background: red;
+      border-radius: 50%;
+    }
+    /* 右腮紅 */
+    .center::after{
+      content: '';
+      width: 70px;
+      height: 70px;
+      /* border: 1px solid red; */
+
+      position: absolute;
+      right: -75%;
+
+      background: red;
+      border-radius: 50%;
+    }
+    .nose{
+      width: 30px;
+      height: 20px;
+      /* border: 1px solid pink; */
+
+      position: absolute;
+      left: 50%;
+      top: 8%;
+      transform: translate(-50%, 0%);
+
+      background: black;
+      border-radius: 50%;
+    }
+    /* 左眼 */
+    .nose::before{
+      content: '';
+      width: 40px;
+      height: 40px;
+      border: 10px solid white;
+
+      position: absolute;
+      right: 150%;
+      bottom: 120%;
+
+      background: black;
+      border-radius: 50%;
+    }
+    /* 右眼 */
+    .nose::after{
+      content: '';
+      width: 40px;
+      height: 40px;
+      border: 10px solid white;
+
+      position: absolute;
+      left: 150%;
+      bottom: 120%;
+
+      background: black;
+      border-radius: 50%;
+    }
+    /* 嘴巴 */
+    .mouth{
+      width: 80px;
+      height: 30px;
+      /* border: 1px solid blue; */
+
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, 0%);
+
+      background: black;
+      border-radius: 50%;
+    }
+    /* 左領 */
+    .mouth::before{
+      content: '';
+      width: 40px;
+      height: 40px;
+      /* border: 1px solid blue; */
+
+      position: absolute;
+      top: 250%;
+      left: -8%;
+
+      background: white;
+      transform: skew(49deg);
+    }
+    /* 右領 */
+    .mouth::after{
+      content: '';
+      width: 40px;
+      height: 40px;
+      /* border: 1px solid blue; */
+
+      position: absolute;
+      top: 250%;
+      right: -8%;
+
+      background: white;
+      transform: skew(-49deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="face">
+    <div class="center">
+      <div class="nose"></div>
+      <div class="mouth"></div>
+    </div>
+  </div>
+
+</body>
+</html>
