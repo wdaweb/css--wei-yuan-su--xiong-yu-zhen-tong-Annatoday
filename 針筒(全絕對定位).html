@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 偽元素定位後才會展開 */
+    /* 1. z-index調整元素順序，注意必須要在同一層，否則無效。
+    例如針筒本體是相對定位，其偽元素推管與文字是絕對定位，此時用z-index只有偽元素可移動，因為本體在不同層(待最下方)。*/
+    /* 2. 漸層順序與圖畫紙概念相同 */
+    /* 3. 中間海苔偽裝元素放大縮小時會跑版，再改用漸層 */
+
+    /* 針筒本體 */
+    .main {
+      width: 660px;
+      height: 150px;
+      border: 1px solid rgb(192, 188, 188);
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+
+      background:
+        linear-gradient(90deg, transparent 95%, #8f9395 5%) repeat-x left top/22px 20px,
+        linear-gradient(180deg, transparent 0%, rgba(100, 98, 98, 0.3) 60%, rgba(128, 128, 128, 0.3) 70%, transparent 100%),
+        linear-gradient(90deg, white 50%, #f8ff96 50%);
+    }
+
+    .main::before {
+      content: "Made in Taiwan";
+      width: 200px;
+      height: 30px;
+      color: rgb(170, 169, 169);
+      font-family: "Microsoft YaHei";
+      font-size: 22px;
+
+      position: absolute;
+      bottom: 0;
+    }
+
+    .main::after {
+      content: "";
+      width: 820px;
+      height: 100px;
+      border: 1px solid rgb(192, 188, 188);
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      z-index: -1;
+
+      background:
+        linear-gradient(180deg, white 0%, lightgray 64%, lightgray 65%, white 100%);
+
+    }
+    /* 按鈕本體 */
+    .push {
+      width: 60px;
+      height: 150px;
+      border: 1px solid rgb(192, 188, 188);
+      border-radius: 10px;
+
+      position: absolute;
+      left: -21%;
+
+      background:
+        linear-gradient(180deg, white 0%, lightgray 60%, lightgray 61%, white 100%);
+    }
+
+    .push::before {
+    content: "";
+    width: 60px;
+    height: 151px;
+    /* border: 1px solid black; */
+    background: black;
+    position: absolute;
+    left: 728%;
+    /* top: -1%; */
+    bottom: 1px;
+    }
+
+    .push::after {
+      content: "";
+      width: 100px;
+      border: 1px solid rgb(192, 188, 188);
+
+      position: absolute;
+      top: 50%;
+      left: 1460%;
+      transform: translate(0%, -50%);
+      z-index: -2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="push"></div>
+  </div>
+</body>
+
+</html>
